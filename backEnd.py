@@ -8,7 +8,7 @@ app.secret_key = 'charles has a secret key'
 
 @app.route("/")
 def hello():
-    session_start()
+    #session_start()
     return render_template("runIt.html")
 
 
@@ -91,6 +91,5 @@ def resetScores():
 
 
 if __name__ == "__main__":
-	app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 	port = int(os.environ.get('PORT', 5000))
 	app.run(host='0.0.0.0', port=port)
