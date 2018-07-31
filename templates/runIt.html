@@ -22,6 +22,18 @@
 			<button type = 'button' onclick = "resetScore()">Reset Counts</button>
 		</div>
 		<script>
+			function startDis(){
+				idNum = prompt("Do you have a session id?");
+				body = { "id" : idNum };
+				req_object = {
+						method : "POST",
+						headers : {
+							"Content-Type" : "application/json; charset=utf-8"
+						},
+						body : JSON.stringify(body)
+				}
+				req = fetch("/startses", req_object).then((res) => res.text());
+			}
 			function first(num){
 				body = { "door" : num };
 				req_object = {
