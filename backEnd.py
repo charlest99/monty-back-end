@@ -21,6 +21,7 @@ def session_start():
 @app.route("/guessOne", methods = [ "POST" ])
 def firstGuess():
 	sel = json.loads(request.data.decode("utf-8"))["door"]
+	session_start()
 	generated = True
 	win = session['win']
 	if generated:
