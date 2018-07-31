@@ -52,10 +52,10 @@ def firstGuess():
 
 
 
-@app.route("/guessTwo")
+@app.route("/guessTwo", methods = [ "POST" ])
 def winOrLose():
 	global win
-	sel = 0#IN A GOOD PLACE IF CAN FIGURE OUT REQUEST AND FUNCTION STRUCTURE
+	sel = json.loads(request.data.decode("utf-8"))["door"]
 	if 	(sel == 1) and (win == 1):
 		return '1'
 	elif (sel == 2) and (win == 2):
