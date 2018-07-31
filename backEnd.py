@@ -19,7 +19,7 @@ def randGenerator():
 def firstGuess():
 	global win
 	global generated
-	sel = request.data['door']
+	sel = request.data.decode("utf-8")
 	"""
 	if (generated == False):
 		generated = True
