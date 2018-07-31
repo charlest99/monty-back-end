@@ -66,17 +66,17 @@ def winOrLose():
 	else:
 		return '6'
 
-@app.route("/scoreUpdate", methods = [  "POST"  ])
+@app.route("/scoreUpdate")
 def updateScore():
 	global score
 	score+=1
-	return str(score)
+	return score
 
 @app.route("/gameUpdate")
 def updateGame():
 	global games
 	games+=1
-	return str(games)
+	return games
 
 @app.route("/resetGame")
 def resetScores():
@@ -84,7 +84,7 @@ def resetScores():
 	global score
 	score = 0
 	games = 0
-	return "0" 
+	return 0 
 
 
 
