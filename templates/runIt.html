@@ -70,21 +70,21 @@
 					if (result == "1"){
 						document.getElementById("Door One").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
 						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
-						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementbyId("count").innerHTML = score;}).catch(err => console.log(err, document), document);
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementbyId("games").innerHTML = game;});
+						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementById("count").innerHTML = score;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
 					}
 					else if (result == "2"){
 						document.getElementById("Door Two").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
 						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
-						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementbyId("count").innerHTML = score;});
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementbyId("games").innerHTML = game;});
+						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementById("count").innerHTML = score;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
 					
 					}
 					else if (result == '3'){
 						document.getElementById("Door Three").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
 						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
-						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementbyId("count").innerHTML = score;});
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementbyId("games").innerHTML = game;});
+						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementById("count").innerHTML = score;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
 						
 
 
@@ -92,7 +92,7 @@
 					else if(result == '4'){
 						document.getElementById("Door One").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
 						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementbyId("games").innerHTML = game;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
 	
 
 
@@ -100,13 +100,13 @@
 					else if(result == '5'){
 						document.getElementById("Door Two").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
 						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementbyId("games").innerHTML = game;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
 						
 					}
 					else{
 						document.getElementById("Door Three").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
 						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementbyId("games").innerHTML = game;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
 						
 
 					}
@@ -132,8 +132,8 @@
 			
 			function resetScore(){
 				req = fetch("/resetGame").then((res) => res.text()).then(function(reset){
-					document.getElementbyId("games").innerHTML = reset;
-					document.getElementbyId("count").innerHTML = reset;
+					document.getElementById("games").innerHTML = reset;
+					document.getElementById("count").innerHTML = reset;
 				});
 			};
 		</script>
