@@ -19,12 +19,12 @@ def randGenerator():
 def firstGuess():
 	global win
 	global generated
-	print(request.data)
+	console.log(request.form['door'])
 	sel = request.form['door']
 	if (generated == False):
 		generated = True
 		win = randGenerator()
-
+		console.log(win)
 
 	if generated:
 		if (win == 1):
