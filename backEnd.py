@@ -5,7 +5,6 @@ import os
 app = Flask(__name__)
 
 win = 0
-generated = False
 
 @app.route("/")
 def hello():
@@ -19,12 +18,7 @@ def hello():
 @app.route("/guessOne", methods = [ "POST" ])
 def firstGuess():
 	global win
-#	global generated
 	sel = json.loads(request.data.decode("utf-8"))["door"]
-#	if (generated == False):
-		#generated = True
-	win = randGenerator()
-		#return win
 	generated = True
 	win = random.randint(1,3)
 	if generated:
