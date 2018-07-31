@@ -51,7 +51,15 @@
 				});
 			};
 			function second(num){
-				req = fetch("/guessTwo").then((res) => res.text()).then(function(result){
+				body = { "door" : num };
+				req_object = {
+						method : "POST",
+						headers : {
+							"Content-Type" : "application/json; charset=utf-8"
+						},
+						body : JSON.stringify(body)
+				}
+				req = fetch("/guessTwo", req_object).then((res) => res.text()).then(function(result){
 					if (result == "1"){
 						document.getElementById("Door One").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
 						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
