@@ -3,6 +3,7 @@ import json
 import random
 import os
 app = Flask(__name__)
+app.secret_key = 'charles has a secret key'
 
 win = 0
 score = 0
@@ -11,16 +12,21 @@ games = 0
 
 @app.route("/")
 def hello():
-    session['tmp'] = 43
+    session_start()
     return render_template("runIt.html")
+
+
+def session_start():
+	session['win'] = random.randint(1,3)
+	session['score'] = 0
+	session['games'] = 0
 
 
 @app.route("/guessOne", methods = [ "POST" ])
 def firstGuess():
-	global win
 	sel = json.loads(request.data.decode("utf-8"))["door"]
 	generated = True
-	win = random.randint(1,3)
+	win = session['win']
 	if generated:
 		if (win == 1):
 			if (sel == 1):
@@ -52,7 +58,7 @@ def firstGuess():
 
 @app.route("/guessTwo", methods = [ "POST" ])
 def winOrLose():
-	global win
+	win = session['win']
 	sel = json.loads(request.data.decode("utf-8"))["door"]
 	if 	(sel == 1) and (win == 1):
 		return '1'
@@ -69,22 +75,20 @@ def winOrLose():
 
 @app.route("/scoreUpdate")
 def updateScore():
-	global score
-	score+=1
-	return str(score)
+	session['score']+=1
+	return str(session['score'])
 
 @app.route("/gameUpdate")
 def updateGame():
-	global games
-	games+=1
-	return str(games)
+	session['games']+=1
+	session['win'] = random.randint(1,3)
+	return str(session['games'])
 
 @app.route("/resetGame")
 def resetScores():
-	global games
-	global score
-	score = 0
-	games = 0
+	session['score'] = 0
+	session['games'] = 0
+	session['win'] = random.randint(1,3)
 	return "0" 
 
 
