@@ -70,7 +70,7 @@
 					if (result == "1"){
 						document.getElementById("Door One").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
 						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
-						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementbyId("count").innerHTML = score;});
+						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementbyId("count").innerHTML = score;}).catch(err => console.log(err, document), document);
 						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementbyId("games").innerHTML = game;});
 					}
 					else if (result == "2"){
