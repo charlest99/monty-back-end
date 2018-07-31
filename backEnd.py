@@ -24,7 +24,7 @@ def firstGuess():
 	if (generated == False):
 		generated = True
 		win = randGenerator()
-		print(win)
+		return win
 
 	if generated:
 		if (win == 1):
