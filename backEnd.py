@@ -19,8 +19,8 @@ def randGenerator():
 def firstGuess():
 	global win
 	global generated
-	sel = request.form['door']
-	print("Form: {}".format(sel))
+	sel = request.data['door']
+	"""
 	if (generated == False):
 		generated = True
 		win = randGenerator()
@@ -47,7 +47,9 @@ def firstGuess():
 			elif (sel == 1):
 				return "2"
 			else:
-				return "1"
+				return "1"	
+	"""
+	return sel
 
 
 
