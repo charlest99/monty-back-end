@@ -5,6 +5,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'charles has a secret key'
 
+session = {'inp':0, 'win':random.randint(1,3), 'score':0, 'games':0}
 
 @app.route("/")
 def hello():
@@ -14,10 +15,10 @@ def hello():
 @app.route("/startses", methods = [ "POST" ])
 def session_start():
 	inp = json.loads(request.data.decode("utf-8"))["id"]
-	if inp not in session:
-		session['win'] = random.randint(1,3)
-		session['score'] = 0
-		session['games'] = 0
+	session['inp'] = inp
+	session['win'] = random.randint(1,3)
+	session['score'] = 0
+	session['games'] = 0
 
 
 @app.route("/guessOne", methods = [ "POST" ])
