@@ -14,6 +14,9 @@
 		<p align = 'center'  id="textChange">
 			Click a door! 
 		</p>
+		<div align = 'center'>
+			<button type = 'button' onclick = reset>Reset</button>
+		</div>
 		<script>
 			function first(num){
 				body = { "door" : num };
@@ -99,9 +102,9 @@
 				document.getElementById("Door Two").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN";
 				document.getElementById("Door One").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN";
 				document.getElementById("textChange").innerHTML = "Click a door!"
-				document.getElementById("Door Three").onclick = "first(3)";
-				document.getElementById("Door One").onclick = "first(1)";
-				document.getElementById("Door Two").onclick = "first(2)";
+				document.getElementById("Door Three").onclick = function(){first(3);}
+				document.getElementById("Door One").onclick = function(){first(1);}
+				document.getElementById("Door Two").onclick = function(){first(2);}
 			}
 
 			function doNothing(){
