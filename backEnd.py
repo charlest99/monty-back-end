@@ -11,17 +11,18 @@ def hello():
     #session_start()
     return render_template("runIt.html")
 
-
+@app.route("/startses", methods = [ "POST" ])
 def session_start():
-	session['win'] = random.randint(1,3)
-	session['score'] = 0
-	session['games'] = 0
+	inp = json.loads(request.data.decode("utf-8"))["id"]
+	if inp not in session:
+		session['win'] = random.randint(1,3)
+		session['score'] = 0
+		session['games'] = 0
 
 
 @app.route("/guessOne", methods = [ "POST" ])
 def firstGuess():
 	sel = json.loads(request.data.decode("utf-8"))["door"]
-	session_start()
 	generated = True
 	win = session['win']
 	if generated:
