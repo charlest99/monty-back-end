@@ -12,20 +12,21 @@ def hello():
     return render_template("runIt.html")
 
 
-@app.route("/num")
-def randGenerator():
-	return random.randint(1, 3)
+#@app.route("/num")
+#def randGenerator():
+#	return random.randint(1, 3)
 
 @app.route("/guessOne", methods = [ "POST" ])
 def firstGuess():
-	global win
-	global generated
+#	global win
+#	global generated
 	sel = json.loads(request.data.decode("utf-8"))["door"]
-	if (generated == False):
-		generated = True
-		win = randGenerator()
-		return win
-
+#	if (generated == False):
+		#generated = True
+		#win = randGenerator()
+		#return win
+	generated = True
+	win = random.randint(1,3)
 	if generated:
 		if (win == 1):
 			if (sel == 1):
