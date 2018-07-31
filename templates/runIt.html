@@ -17,6 +17,7 @@
 		<div align = 'center'>
 			<span align = 'center'>Wins: </span><span id = 'count' text-align = 'center'>0</span>
 			<span align = 'center'>    Games: </span><span id = 'games' text-align = 'center'>0</span>
+			<span align = 'center'>    Percent: </span><span id = 'perc' text-align = 'center'>0</span><span align = 'center'>%</span>
 		</div>
 		<div align = 'center'>
 			<button type = 'button' onclick = "resetScore()">Reset Counts</button>
@@ -89,14 +90,16 @@
 						document.getElementById("Door Two").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
 						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
 						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementById("count").innerHTML = score;});
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
+															   document.getElementById("perc").innerHTML = document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
 					
 					}
 					else if (result == '3'){
 						document.getElementById("Door Three").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
 						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
 						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementById("count").innerHTML = score;});
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
+															   document.getElementById("perc").innerHTML = document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
 						
 
 
@@ -104,7 +107,8 @@
 					else if(result == '4'){
 						document.getElementById("Door One").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
 						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
+															   document.getElementById("perc").innerHTML = document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
 	
 
 
@@ -112,13 +116,15 @@
 					else if(result == '5'){
 						document.getElementById("Door Two").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
 						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
+															   document.getElementById("perc").innerHTML = document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
 						
 					}
 					else{
 						document.getElementById("Door Three").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
 						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
+															   document.getElementById("perc").innerHTML = document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
 						
 
 					}
