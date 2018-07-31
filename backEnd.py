@@ -10,10 +10,8 @@ games = 0
 
 
 @app.route("/")
-def run():
-	session['tmp'] = 43
-	return '43'
 def hello():
+    session['tmp'] = 43
     return render_template("runIt.html")
 
 
