@@ -20,6 +20,7 @@ def firstGuess():
 	global win
 	global generated
 	sel = request.form['door']
+	print("Form: {}".format(sel))
 	if (generated == False):
 		generated = True
 		win = randGenerator()
