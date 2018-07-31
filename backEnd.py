@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import json
 import random
 import os
 app = Flask(__name__)
@@ -19,8 +20,7 @@ def randGenerator():
 def firstGuess():
 	global win
 	global generated
-	sel = request.data.decode("utf-8")
-	"""
+	sel = json.loads(request.data.decode("utf-8"))["door"]
 	if (generated == False):
 		generated = True
 		win = randGenerator()
@@ -47,9 +47,7 @@ def firstGuess():
 			elif (sel == 1):
 				return "2"
 			else:
-				return "1"	
-	"""
-	return sel
+				return "1"
 
 
 
