@@ -85,14 +85,14 @@
 						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
 						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementById("count").innerHTML = score;});
 						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
-															   document.getElementById("perc").innerHTML = 100*document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
+															   });
 					}
 					else if (result == "2"){
 						document.getElementById("Door Two").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
 						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
 						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementById("count").innerHTML = score;});
 						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
-															   document.getElementById("perc").innerHTML = 100*document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
+															  });
 					
 					}
 					else if (result == '3'){
@@ -100,7 +100,7 @@
 						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
 						reqOne = fetch("/scoreUpdate").then((ret) => ret.text()).then(function(score){document.getElementById("count").innerHTML = score;});
 						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
-															   document.getElementById("perc").innerHTML = 100*document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
+															  });
 						
 
 
@@ -109,7 +109,7 @@
 						document.getElementById("Door One").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
 						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
 						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
-															   document.getElementById("perc").innerHTML = 100*document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
+															   });
 	
 
 
@@ -118,20 +118,20 @@
 						document.getElementById("Door Two").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
 						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
 						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
-															   document.getElementById("perc").innerHTML = 100*document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
+															   });
 						
 					}
 					else{
 						document.getElementById("Door Three").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
 						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
-						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;
-															   document.getElementById("perc").innerHTML = 100*document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;});
+						reqTwo = fetch("/gameUpdate").then((rer) => rer.text()).then(function(game){document.getElementById("games").innerHTML = game;});
 						
 
 					}
 					document.getElementById("Door One").onclick = reset;
 					document.getElementById("Door Two").onclick = reset;
 					document.getElementById("Door Three").onclick = reset;
+					document.getElementById("perc").innerHTML = 100*document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;
 
 				});
 			};
@@ -153,6 +153,7 @@
 				req = fetch("/resetGame").then((res) => res.text()).then(function(reset){
 					document.getElementById("games").innerHTML = reset;
 					document.getElementById("count").innerHTML = reset;
+					document.getElementById("perc").innerHTML = reset;
 				});
 			};
 		</script>
