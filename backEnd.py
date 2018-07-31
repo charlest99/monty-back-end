@@ -18,12 +18,12 @@ def hello():
 
 @app.route("/guessOne", methods = [ "POST" ])
 def firstGuess():
-#	global win
+	global win
 #	global generated
 	sel = json.loads(request.data.decode("utf-8"))["door"]
 #	if (generated == False):
 		#generated = True
-		#win = randGenerator()
+	win = randGenerator()
 		#return win
 	generated = True
 	win = random.randint(1,3)
