@@ -75,4 +75,4 @@ def winOrLose():
 
 
 if __name__ == "__main__":
-	app.run(port=3500, debug=True)
+	app.run(port=process.env.PORT, debug=True)
