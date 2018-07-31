@@ -5,10 +5,6 @@ import os
 app = Flask(__name__)
 app.secret_key = 'charles has a secret key'
 
-win = 0
-score = 0
-games = 0
-
 
 @app.route("/")
 def hello():
