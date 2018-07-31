@@ -1,0 +1,16 @@
+ <!DOCTYPE html>
+ <html>
+ 	<head>
+ 		<h1>Random number generator (Back End) </h1>
+ 	</head>
+ 	<body>
+ 		<button type="button" onclick="myFunc()">Click Me!</button>
+ 		<p>Number = </p><p id = "num"></p>
+ 		<script>
+ 			function myFunc(){
+ 				req = fetch("/num").then((res) => res.text()).then(function(result){document.getElementById("num").innerHTML = result;});
+ 			}; 
+ 		</script>
+
+ 	</body>
+ </html>

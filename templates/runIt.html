@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Monty Hall Game</title>
+	</head>
+	<body style="background-color: blue">
+		<h1 style = 'text-align: center;font-size:200%;font-family: courier;'>Monty Hall Game Rules</h1>
+ 		<p style = 'text-align: center;font-size:200%;font-family: courier;'>Money is behind one of three doors. Pick a door, a door without the money will be eliminated, and then you will be given the option to switch your door choice between the remaining two. After choosing, the door with the money is revealed.</p>
+ 		<p align = "center">
+ 			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN" onclick="first(1)" id="Door One" width = "250" height = "550">
+ 			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN" onclick="first(2)" id="Door Two" width = "250" height = "550">
+ 			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN" onclick="first(3)" id="Door Three" width = "250" height = "550">
+		</p>
+		<p align = 'center'  id="textChange">
+			Click a door! 
+		</p>
+		<script>
+			function first(num){
+				body = { "door" : num };
+				req_object = {
+						method : "POST",
+						headers : {
+							"Content-Type" : "application/json; charset=utf-8"
+						},
+						body : JSON.stringify(body)
+				}
+				req = fetch("/guessOne", req_object).then((res) => res.text()).then(function(result){
+					if (result == "1"){
+						document.getElementById("Door One").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
+						document.getElementById("textChange").innerHTML = "Door one has been eliminated, and you may now switch doors. Click your choice.";
+						document.getElementById("Door Three").onclick = second(3);
+						document.getElementById("Door One").onclick = doNothing;
+						document.getElementById("Door Two").onclick = second(2);
+					}
+					else if(result == "2"){
+						document.getElementById("Door Two").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
+						document.getElementById("textChange").innerHTML = "Door two has been eliminated, and you may now switch doors. Click your choice.";
+						document.getElementById("Door Three").onclick = second(3);
+						document.getElementById("Door Two").onclick = doNothing;
+						document.getElementById("Door One").onclick = second(1);
+
+					}
+					else{
+						document.getElementById("Door Three").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
+						document.getElementById("textChange").innerHTML = "Door three has been eliminated, and you may now switch doors. Click your choice.";
+						document.getElementById("Door Two").onclick = second(2);
+						document.getElementById("Door Three").onclick = doNothing;
+						document.getElementById("Door One").onclick = second(1);
+
+					}
+				});
+			};
+			function second(num){
+				req = fetch("/guessTwo").then((res) => res.text()).then(function(result){
+					if (result == "1"){
+						document.getElementById("Door One").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
+						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
+						document.getElementById("Door Three").onclick = reset;
+						document.getElementById("Door One").onclick = reset;
+						document.getElementById("Door Two").onclick = reset;
+
+					}
+					else if (result == "2"){
+						document.getElementById("Door Two").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
+						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
+						document.getElementById("Door Three").onclick = reset;
+						document.getElementById("Door One").onclick = reset;
+						document.getElementById("Door Two").onclick = reset;
+
+
+					}
+					else if (result == '3'){
+						document.getElementById("Door Three").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mcol_money_bag.svg/200px-Mcol_money_bag.svg.png";
+						document.getElementById("textChange").innerHTML = "You win! Click any door to play again.";
+						document.getElementById("Door Three").onclick = reset;
+						document.getElementById("Door One").onclick = reset;
+						document.getElementById("Door Two").onclick = reset;
+
+
+					}
+					else if(result == '4'){
+						document.getElementById("Door One").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
+						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
+						document.getElementById("Door Three").onclick = reset;
+						document.getElementById("Door One").onclick = reset;
+						document.getElementById("Door Two").onclick = reset;
+
+
+					}
+					else if(result == '5'){
+						document.getElementById("Door Two").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
+						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
+						document.getElementById("Door Three").onclick = reset;
+						document.getElementById("Door One").onclick = reset;
+						document.getElementById("Door Two").onclick = reset;
+
+					}
+					else{
+						document.getElementById("Door Three").src = "https://pbs.twimg.com/profile_images/980547001166295041/eBs20xF4_400x400.jpg";
+						document.getElementById("textChange").innerHTML = "You lose! Click any door to play again.";
+						document.getElementById("Door Three").onclick = reset;
+						document.getElementById("Door One").onclick = reset;
+						document.getElementById("Door Two").onclick = reset;
+
+					}
+
+				});
+			};
+			function reset(){
+				document.getElementById("Door Three").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN";
+				document.getElementById("Door Two").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN";
+				document.getElementById("Door One").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN";
+				document.getElementById("textChange").innerHTML = "Click a door!"
+				document.getElementById("Door Three").onclick = first(3);
+				document.getElementById("Door One").onclick = first(1);
+				document.getElementById("Door Two").onclick = first(2);
+			}
+
+			function doNothing(){
+				document.getElementById("textChange").innerHTML = "Door already opened! Choose a different door."
+			}
+		</script>
+
+	</body>
+
+</html>
