@@ -71,12 +71,12 @@ def winOrLose():
 
 @app.route("/scoreUpdate")
 def updateScore():
-	session['score']+=1
+	session['score'] = session['score'] + 1
 	return str(session['score'])
 
 @app.route("/gameUpdate")
 def updateGame():
-	session['games']+=1
+	session['games']= session['games'] + 1
 	session['win'] = random.randint(1,3)
 	return str(session['games'])
 
