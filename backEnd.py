@@ -70,13 +70,13 @@ def winOrLose():
 def updateScore():
 	global score
 	score+=1
-	return score
+	return str(score)
 
 @app.route("/gameUpdate")
 def updateGame():
 	global games
 	games+=1
-	return games
+	return str(games)
 
 @app.route("/resetGame")
 def resetScores():
@@ -84,7 +84,7 @@ def resetScores():
 	global score
 	score = 0
 	games = 0
-	return 0 
+	return "0" 
 
 
 
