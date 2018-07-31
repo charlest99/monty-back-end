@@ -5,15 +5,14 @@ import os
 app = Flask(__name__)
 
 win = 0
+score = 0
+games = 0
+
 
 @app.route("/")
 def hello():
     return render_template("runIt.html")
 
-
-#@app.route("/num")
-#def randGenerator():
-#	return random.randint(1, 3)
 
 @app.route("/guessOne", methods = [ "POST" ])
 def firstGuess():
@@ -67,8 +66,25 @@ def winOrLose():
 	else:
 		return '6'
 
-	
+@app.route("/scoreUpdate", methods = [  "POST"  ])
+def updateScore():
+	global score
+	score+=1
+	return str(score)
 
+@app.route("/gameUpdate")
+def updateGame():
+	global games
+	games+=1
+	return str(games)
+
+@app.route("/resetGame")
+def resetScores():
+	global games
+	global score
+	score = 0
+	games = 0
+	return "0" 
 
 
 
