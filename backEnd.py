@@ -30,14 +30,17 @@ def firstGuess():
 	if generated:
 		if (win == 1):
 			if (sel == 1):
-				return str(random.randint(1,2))
+				return str(random.randint(2,3))
 			elif sel == 2:
 				return "3"
 			else:
 				return "2"
 		elif (win == 2):
 			if (sel == 2):
-				return str(random.randint(1,2))
+				if random.randint(1,2) == 1:
+					return "1"
+				else:
+					return "3"
 			elif (sel == 1):
 				return "3"
 			else:
