@@ -136,7 +136,7 @@
 				});
 			};
 			function reset(){
-				document.getElementById("perc").innerHTML = 100*document.getElementById("count").innerHTML/document.getElementById("games").innerHTML;
+				document.getElementById("perc").innerHTML = (100*document.getElementById("count").innerHTML/document.getElementById("games").innerHTML).toFixed(2);
 				document.getElementById("Door Three").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN";
 				document.getElementById("Door Two").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN";
 				document.getElementById("Door One").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDFff-zG9rvJjOSEzHZYHl3A6kwHaJSN-MGnehwKMzShfEaIupkSDtbqDN";
